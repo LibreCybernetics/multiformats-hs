@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 324b563bdb8c1c1b90c5a539201ca0c480f6cf3d7d378dbeea46f7d5250926b0
+-- hash: 5632b309ccd991427feffe6ee6380b7c1f3daefff3e3a9f4621902b854d2eca3
 
 name:           multiformats
 version:        0.1.0.0
@@ -44,7 +44,7 @@ executable multiformats-app
       Paths_multiformats
   hs-source-dirs:
       app
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.12 && <5
     , bytestring >=0.10.8.2 && <1
@@ -60,7 +60,7 @@ test-suite multiformats-test
       Paths_multiformats
   hs-source-dirs:
       test
-  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  ghc-options: -Wall -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       base >=4.12 && <5
     , bytestring >=0.10.8.2 && <1

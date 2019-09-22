@@ -15,15 +15,18 @@ import Test.Tasty.Hspec
 
 -- Unit Tests
 
-spec_emptyShouldError =
-  it "Attempting to decode empty text should error" $ do
-    decode "" `shouldBe` Left Empty
+spec_errors ::  Spec
+spec_errors =
+  describe "Basic Error Handling" $ do
+    it "Attempting to decode empty text should error" $
+      decode "" `shouldBe` Left EmptyInput
+    it "Attempting to decode an unknown codec should error" $
+      decode "x" `shouldBe` Left UnknownCodec
 
-spec_unspecifiedCodecShouldError =
-  it "Attempting to decode an unknown codec should error" $ do
-    decode "x" `shouldBe` Left UnknownCodec
-
-spec_example1 = exampleTestHelper "Decentralize everything!!" "Multibase1.csv"
+spec_examples :: Spec
+spec_examples =
+  describe "Example Data Should Match" $ do
+    exampleTestHelper "Decentralize everything!!" "Multibase1.csv"
 
 -- Unit Test Helpers
 
@@ -41,7 +44,7 @@ exampleTestHelperLoad path = do
 -- Properties
 
 prop_decodeIsLeftInverseOfEncode :: ByteString -> Bool
-prop_decodeIsLeftInverseOfEncode input = decoded == input
+prop_decodeIsLeftInverseOfEncode input = (input == decId)
   where
-    encoded = encode Identity input
-    Right (Identity, decoded) = decode encoded
+    encId = encode Identity input
+    Right (Identity, decId) = decode encId

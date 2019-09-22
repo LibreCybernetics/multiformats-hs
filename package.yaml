@@ -1,32 +1,27 @@
-name:                multiformats-hs
+name:                multiformats
 version:             0.1.0.0
-github:              "githubuser/multiformats-hs"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2019 Author name here"
+github:              "LibreCybernetics/multiformats-hs"
+license:             Parity-6.0.0
+author:              "LibreCybernetics"
 
 extra-source-files:
 - README.md
 - ChangeLog.md
 
-# Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
-
-# To avoid duplicated efforts in documentation and dealing with the
-# complications of embedding Haddock markup inside cabal files, it is
-# common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/multiformats-hs#readme>
+description:         Please see the README
 
 dependencies:
-- base >= 4.7 && < 5
+- base       >= 4.12     && < 5
+- bytestring >= 0.10.8.2 && < 1
+- text       >= 1.2.3.1  && < 2
 
 library:
   source-dirs: src
+  ghc-options:
+  - -Wall
 
 executables:
-  multiformats-hs-exe:
+  multiformats-app:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -34,15 +29,20 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - multiformats-hs
+    - multiformats
 
 tests:
-  multiformats-hs-test:
-    main:                Spec.hs
-    source-dirs:         test
+  multiformats-test:
+    main:        TestSuite.hs
+    source-dirs: test
     ghc-options:
     - -threaded
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - multiformats-hs
+    - multiformats
+    - quickcheck-instances
+    - tasty
+    - tasty-discover
+    - tasty-hspec
+    - tasty-quickcheck

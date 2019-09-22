@@ -1,5 +1,5 @@
 module Data.Multiformats.Multibase (
-  Multibase(Identity), MultibaseError,
+  Multibase(Identity), MultibaseError(Empty, UnknownCodec, CodecError),
   encode, decode
 ) where
 
@@ -9,8 +9,8 @@ import Data.Text             as T
 
 -- Types
 
-data Multibase = Identity
-data MultibaseError = Empty | UnkownCodec | CodecError
+data Multibase = Identity deriving (Eq, Show)
+data MultibaseError = Empty | UnknownCodec | CodecError deriving (Eq, Show)
 
  -- Signatures
 
@@ -25,7 +25,7 @@ decode t | T.null t  = Left Empty
          | otherwise =
  case T.head t of
    '\0' -> Right (Identity, idDec payload)
-   _    -> Left UnkownCodec
+   _    -> Left UnknownCodec
    where payload = T.tail t
 
 -- Helper Functions (Hidden)

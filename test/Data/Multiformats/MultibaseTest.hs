@@ -13,9 +13,19 @@ import Data.Text.IO    as IO
 import Test.QuickCheck.Instances.ByteString ()
 import Test.Tasty.Hspec
 
--- Examples
+-- Unit Tests
+
+spec_emptyShouldError =
+  it "Attempting to decode empty text should error" $ do
+    decode "" `shouldBe` Left Empty
+
+spec_unspecifiedCodecShouldError =
+  it "Attempting to decode an unknown codec should error" $ do
+    decode "x" `shouldBe` Left UnknownCodec
 
 spec_example1 = exampleTestHelper "Decentralize everything!!" "Multibase1.csv"
+
+-- Unit Test Helpers
 
 exampleTestHelper :: ByteString -> FilePath -> Spec
 exampleTestHelper bs path =

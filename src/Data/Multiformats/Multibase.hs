@@ -1,5 +1,5 @@
 module Data.Multiformats.Multibase (
-  Multibase(Identity), MultibaseError(EmptyInput, UnknownCodec, CodecError),
+  Multibase(..), MultibaseError(..),
   encode, decode
 ) where
 
@@ -9,8 +9,12 @@ import Data.Text             as T
 
 -- Types
 
-data Multibase      = Identity | Base2 deriving (Eq, Show)
-data MultibaseError = EmptyInput | UnknownCodec | CodecError deriving (Eq, Show)
+data Multibase =
+  Identity | Base2
+  deriving (Eq, Show)
+data MultibaseError =
+  EmptyInput | UnknownCodec | CodecError
+  deriving (Eq, Show)
 
  -- Signatures
 
@@ -19,15 +23,20 @@ decode :: Text -> Either MultibaseError (Multibase, ByteString)
 
 -- Implementations
 
-encode Identity bs = '\0' `T.cons` idEnc bs
-encode Base2    bs = '2'  `T.cons` base2Enc bs
+encode codec =
+  case codec of
+    Identity -> coded '\0' idEnc
+    Base2    -> coded '0'  base2Enc
+  where
+    coded char encoder = T.cons char . encoder
 
 decode t | T.null t  = Left EmptyInput
          | otherwise =
- case T.head t of
-   '\0' -> Right (Identity, idDec payload)
-   _    -> Left UnknownCodec
-   where payload = T.tail t
+  case T.head t of
+    '\0' -> Right (Identity, idDec payload)
+    _    -> Left UnknownCodec
+  where
+    payload = T.tail t
 
 -- Helper Functions (Hidden)
 
@@ -37,6 +46,6 @@ idDec :: Text -> ByteString
 idDec = Char8.pack . T.unpack
 
 base2Enc :: ByteString -> Text
-base2Enc = undefined
+base2Enc = idEnc
 base2Dec :: Text -> ByteString
-base2Dec = undefined
+base2Dec = idDec

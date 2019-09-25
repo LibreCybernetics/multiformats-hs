@@ -1,3 +1,5 @@
+nix
 .stack-work/
-multiformats-hs.cabal
+
+*.cabal
 *~

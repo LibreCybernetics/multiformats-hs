@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 5632b309ccd991427feffe6ee6380b7c1f3daefff3e3a9f4621902b854d2eca3
+-- hash: f96eb69e196a65627a11f3afa173d4fc4708bd994fb1d0fda6af548f295dc33f
 
 name:           multiformats
 version:        0.1.0.0
@@ -14,7 +14,6 @@ bug-reports:    https://github.com/LibreCybernetics/multiformats-hs/issues
 author:         LibreCybernetics
 maintainer:     LibreCybernetics
 license:        Parity-6.0.0
-license-file:   LICENSE
 build-type:     Simple
 extra-source-files:
     README.md

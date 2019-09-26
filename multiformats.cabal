@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f96eb69e196a65627a11f3afa173d4fc4708bd994fb1d0fda6af548f295dc33f
+-- hash: daf97c20a850fd2f072f51a0ffb1231a3756c0e5fdd2a847448ed05480fc9463
 
 name:           multiformats
 version:        0.1.0.0
@@ -13,11 +13,10 @@ homepage:       https://github.com/LibreCybernetics/multiformats-hs#readme
 bug-reports:    https://github.com/LibreCybernetics/multiformats-hs/issues
 author:         LibreCybernetics
 maintainer:     LibreCybernetics
-license:        Parity-6.0.0
+license:        OtherLicense
 build-type:     Simple
 extra-source-files:
     README.md
-    ChangeLog.md
 
 source-repository head
   type: git
@@ -33,6 +32,7 @@ library
   ghc-options: -Wall
   build-depends:
       base >=4.12 && <5
+    , basen
     , bytestring >=0.10.8.2 && <1
     , text >=1.2.3.1 && <2
   default-language: Haskell2010

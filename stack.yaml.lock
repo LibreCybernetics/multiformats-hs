@@ -3,10 +3,24 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    cabal-file:
+      size: 1750
+      sha256: 4bea1e86c1a682e1b275d5d26b7ad750f9102f161e02c3edf8bc4415b86cce0b
+    name: basen
+    version: 0.1.0.0
+    git: https://gitlab.com/LibreCybernetics/lib/basen-hs
+    pantry-tree:
+      size: 548
+      sha256: df1bfbd3abcb9c4d8fd1c72a48c99b9100b73d0a84980083e81e637de08ad439
+    commit: b830e226e57742eced9a1c9c36caa7505e790024
+  original:
+    git: https://gitlab.com/LibreCybernetics/lib/basen-hs
+    commit: b830e226e57742eced9a1c9c36caa7505e790024
 snapshots:
 - completed:
-    size: 524127
-    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/6.yaml
-    sha256: dc70dfb45e2c32f54719819bd055f46855dd4b3bd2e58b9f3f38729a2d553fbb
-  original: lts-14.6
+    size: 523700
+    url: https://raw.githubusercontent.com/commercialhaskell/stackage-snapshots/master/lts/14/7.yaml
+    sha256: 8e3f3c894be74d71fa4bf085e0a8baae7e4d7622d07ea31a52736b80f8b9bb1a
+  original: lts-14.7

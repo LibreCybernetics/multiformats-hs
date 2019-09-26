@@ -1,12 +1,11 @@
 name:                multiformats
 version:             0.1.0.0
 github:              "LibreCybernetics/multiformats-hs"
-license:             Parity-6.0.0
+license:             OtherLicense
 author:              "LibreCybernetics"
 
 extra-source-files:
 - README.md
-- ChangeLog.md
 
 description:         Please see the README
 
@@ -20,6 +19,8 @@ ghc-options:
 
 library:
   source-dirs: src
+  dependencies:
+    - basen
 
 executables:
   multiformats-app:

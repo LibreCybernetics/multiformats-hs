@@ -3,6 +3,7 @@ module Data.Multiformats.Multibase (
   encode, decode
 ) where
 
+import qualified Data.BaseN  as BaseN
 import Data.ByteString       as BS
 import Data.ByteString.Char8 as Char8
 import Data.Text             as T
@@ -46,6 +47,6 @@ idDec :: Text -> ByteString
 idDec = Char8.pack . T.unpack
 
 base2Enc :: ByteString -> Text
-base2Enc = idEnc
+base2Enc = (`BaseN.encodeBaseN` BaseN.Base2)
 base2Dec :: Text -> ByteString
 base2Dec = idDec

@@ -51,5 +51,5 @@ prop_decodeIsLeftInverseOfEncode input =
   where
     encId    = encode Identity input
     encBase2 = encode Base2    input
-    Right (Identity, decId)    = decode encId
-    Right (Base2,    decBase2) = decode encBase2
+    Right (Identity, decId) = decode encId
+    Right (Base2, decBase2) = decode encBase2

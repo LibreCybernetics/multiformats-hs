@@ -12,12 +12,12 @@ packages:
     version: 0.1.0.0
     git: https://gitlab.com/LibreCybernetics/lib/basen-hs
     pantry-tree:
-      size: 548
-      sha256: df1bfbd3abcb9c4d8fd1c72a48c99b9100b73d0a84980083e81e637de08ad439
-    commit: b830e226e57742eced9a1c9c36caa7505e790024
+      size: 603
+      sha256: 32909e2e0818b67989b741fadcf8522b2bd974afcb9c1f8a72e6380f102ddb41
+    commit: 0b90c3c7381aaca14e08ae535f2a3fce40fbc14d
   original:
     git: https://gitlab.com/LibreCybernetics/lib/basen-hs
-    commit: b830e226e57742eced9a1c9c36caa7505e790024
+    commit: 0b90c3c7381aaca14e08ae535f2a3fce40fbc14d
 snapshots:
 - completed:
     size: 523700

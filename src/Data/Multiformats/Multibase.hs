@@ -27,7 +27,7 @@ decode :: Text -> Either MultibaseError (Multibase, ByteString)
 encode codec =
   case codec of
     Identity -> coded '\0' idEnc
-    Base2    -> coded '0'  base2Enc
+    Base2    -> coded '0'  BaseN.encodeBase2
   where
     coded char encoder = T.cons char . encoder
 
@@ -35,6 +35,9 @@ decode t | T.null t  = Left EmptyInput
          | otherwise =
   case T.head t of
     '\0' -> Right (Identity, idDec payload)
+    '0'  -> case BaseN.decodeBase2 payload of
+      (Left _)  -> Left CodecError
+      (Right r) -> Right (Base2, r)
     _    -> Left UnknownCodec
   where
     payload = T.tail t
@@ -45,8 +48,3 @@ idEnc :: ByteString -> Text
 idEnc = T.pack . Char8.unpack
 idDec :: Text -> ByteString
 idDec = Char8.pack . T.unpack
-
-base2Enc :: ByteString -> Text
-base2Enc = (`BaseN.encodeBaseN` BaseN.Base2)
-base2Dec :: Text -> ByteString
-base2Dec = idDec

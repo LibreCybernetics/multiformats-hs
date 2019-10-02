@@ -34,6 +34,7 @@ exampleTestRun = it "Example Data Should Match" $ \values -> mapM_ doCases value
     doCases value = do
       doCase Identity 1
       doCase Base2    2
+      doCase Base8    3
         where
           doCase codec idx = encode codec (encodeUtf8 $ L.head value) `shouldBe` (value !! idx)
 
@@ -47,9 +48,12 @@ exampleTestLoad path = do
 prop_decodeIsLeftInverseOfEncode :: ByteString -> Bool
 prop_decodeIsLeftInverseOfEncode input =
   (input == decId) &&
-  (input == decBase2)
+  (input == decBase2) &&
+  (input == decBase8)
   where
     encId    = encode Identity input
     encBase2 = encode Base2    input
+    encBase8 = encode Base8    input
     Right (Identity, decId) = decode encId
     Right (Base2, decBase2) = decode encBase2
+    Right (Base8, decBase8) = decode encBase8

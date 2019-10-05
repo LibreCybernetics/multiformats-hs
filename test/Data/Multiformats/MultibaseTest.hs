@@ -35,6 +35,7 @@ exampleTestRun = it "Example Data Should Match" $ \values -> mapM_ doCases value
       doCase Identity 1
       doCase Base2    2
       doCase Base8    3
+      doCase Base10   4
         where
           doCase codec idx = encode codec (encodeUtf8 $ L.head value) `shouldBe` (value !! idx)
 

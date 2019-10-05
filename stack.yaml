@@ -5,4 +5,4 @@ packages:
 
 extra-deps:
   - git: https://gitlab.com/LibreCybernetics/lib/basen-hs
-    commit: 912b12fb07cbf4b447ccbd013b22ca48e83f9d83
+    commit: 610616eccffc46cb811edb0be091048f21bddc81

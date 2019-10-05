@@ -6,18 +6,18 @@
 packages:
 - completed:
     cabal-file:
-      size: 1774
-      sha256: 03e953e3552e711e0588411d686f22fd1509e7b10f6c8c1b583203095fad7f06
+      size: 1669
+      sha256: 459aca049f088271001b918101b9cdf321f35ff183bca45a6af904991c5efe79
     name: basen
-    version: 0.1.0.0
+    version: 0.2.0.0
     git: https://gitlab.com/LibreCybernetics/lib/basen-hs
     pantry-tree:
-      size: 762
-      sha256: 1f3610ffcd7513e76aeabd46252cc149c5815bc608c0d6a33c1f88bdccaa6ebb
-    commit: 912b12fb07cbf4b447ccbd013b22ca48e83f9d83
+      size: 1165
+      sha256: 6e222f16f5fa3801fab090b934a01724d63004be14aa0c4ec71e507ed0805d6b
+    commit: 610616eccffc46cb811edb0be091048f21bddc81
   original:
     git: https://gitlab.com/LibreCybernetics/lib/basen-hs
-    commit: 912b12fb07cbf4b447ccbd013b22ca48e83f9d83
+    commit: 610616eccffc46cb811edb0be091048f21bddc81
 snapshots:
 - completed:
     size: 523700

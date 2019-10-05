@@ -11,7 +11,7 @@ import Data.Text             as T
 -- Types
 
 data Multibase =
-  Identity | Base2 | Base8
+  Identity | Base2 | Base8 | Base10
   deriving (Eq, Show)
 data MultibaseError =
   EmptyInput | UnknownCodec | CodecError
@@ -29,6 +29,7 @@ encode codec =
     Identity -> coded '\0' idEnc
     Base2    -> coded '0'  BaseN.encodeBase2
     Base8    -> coded '7'  BaseN.encodeBase8
+    Base10   -> coded '9'  BaseN.encodeBase10
   where
     coded char encoder = T.cons char . encoder
 
@@ -42,6 +43,9 @@ decode t | T.null t  = Left EmptyInput
     '7'  -> case BaseN.decodeBase8 payload of
       (Left _)  -> Left CodecError
       (Right r) -> Right (Base8, r)
+    '9'  -> case BaseN.decodeBase10 payload of
+      (Left _)  -> Left CodecError
+      (Right r) -> Right (Base10, r)
     _    -> Left UnknownCodec
   where
     payload = T.tail t
